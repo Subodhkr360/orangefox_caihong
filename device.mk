@@ -31,7 +31,6 @@ PRODUCT_EXTRA_RECOVERY_KEYS += \
     device/oneplus/caihong/security/otacert \
     device/oneplus/caihong/security/special_OTA
     
-
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_vendor=true \
     POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
@@ -66,11 +65,6 @@ PRODUCT_PACKAGES += \
 # Recovery libs
 TARGET_RECOVERY_DEVICE_MODULES += \
     libion
-
-# Health HAL
-PRODUCT_PACKAGES += \
-    android.hardware.health@2.1-impl \
-    android.hardware.health@2.1-impl.recovery 
 
 RECOVERY_LIBRARY_SOURCE_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libion.so
