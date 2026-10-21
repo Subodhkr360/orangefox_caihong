@@ -64,6 +64,7 @@ TARGET_BOARD_PLATFORM := pineapple
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno750
 
 # Partitions
+BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED  := true
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 104857600
 BOARD_SUPER_PARTITION_SIZE := 15032385536
 BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
@@ -90,13 +91,15 @@ TW_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID := true
 TW_FRAMERATE := 144
 TW_NO_SCREEN_BLANK := true
 TW_NO_SCREEN_TIMEOUT := true
-TW_LOAD_VENDOR_MODULES := "adsp_loader_dlkm.ko"
+TW_LOAD_VENDOR_MODULES := "adsp_loader_dlkm.ko oplus_chg_v2.ko"
+TW_LOAD_VENDOR_MODULES_EXCLUDE_GKI := true
 TW_CUSTOM_CPU_TEMP_PATH := "/sys/devices/virtual/thermal/thermal_zone45/temp"
 TW_BRIGHTNESS_PATH := "/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/backlight/panel0-backlight/brightness"
 TW_MAX_BRIGHTNESS := 2047
 TW_DEFAULT_BRIGHTNESS := 1000
 TW_ALWAYS_RMRF := true
 TW_NO_HAPTICS := true
+TW_USE_DMCTL := true
 TARGET_USES_LOGD := true
 TWRP_INCLUDE_LOGCAT := true
 TARGET_RECOVERY_DEVICE_MODULES += debuggerd
