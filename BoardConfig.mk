@@ -66,23 +66,7 @@ BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED  := true
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 104857600
 BOARD_SUPER_PARTITION_SIZE := 15032385536
 BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
-BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := \
-    system \
-    system_ext \
-    product \
-    vendor \
-    odm \
-    dsp \
-    my_bigball \
-    my_carrier \
-    my_engineering \
-    my_heytap \
-    my_manifest \
-    my_product \
-    my_region \
-    my_stock \
-    system_dlkm \
-    vendor_dlkm
+BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := system system_ext product vendor odm vendor_dlkm
 BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 15032385536
 
 # Recovery
