@@ -1,0 +1,1 @@
+type firmware_file, file_type, contextmount_type, vendor_file_type;

@@ -1,0 +1,7 @@
+/firmware(/.*)?                                  u:object_r:firmware_file:s0
+/vendor/firmware_mnt(/.*)?                       u:object_r:firmware_file:s0
+/mnt/vendor/persist(/.*)?                        u:object_r:mnt_vendor_file:s0
+/sys/class/power_supply(/.*)?                    u:object_r:sysfs_batteryinfo:s0
+/sys/devices/platform/soc/.*power_supply(/.*)?   u:object_r:sysfs_batteryinfo:s0
+/sys/devices/platform/soc/.*oplus.*(/.*)?        u:object_r:sysfs_batteryinfo:s0
+/sys/kernel/boot_adsp(/.*)?                      u:object_r:sysfs:s0

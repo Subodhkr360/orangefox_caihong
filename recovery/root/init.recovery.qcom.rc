@@ -50,18 +50,26 @@ on fs
     umount /metadata
 
 on property:twrp.modules.loaded=true
+    # Mount firmware
+    wait /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} 2
+    mkdir /firmware
+    mount vfat /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /firmware ro uid=0,gid=0,dmask=0000,fmask=0000
+    
+    # Ensure firmware symlinks and kernel search path
+    symlink /firmware /vendor/firmware_mnt
+    write /sys/module/firmware_class/parameters/path /firmware/image
+    
+    # Boot ADSP for PMIC Fuel Gauge
+    wait /sys/kernel/boot_adsp/boot 2
+    write /sys/kernel/boot_adsp/boot 1
+    wait /sys/class/power_supply/battery 5
+    # Trigger a re-read and restore contexts so recovery can read the fuel gauge
+    chmod 0664 /sys/class/power_supply/battery/uevent
+    restorecon_recursive /sys/class/power_supply
+    
     # Mount persist
     mkdir /mnt/vendor/persist
     mount ext4 /dev/block/bootdevice/by-name/persist /mnt/vendor/persist ro
-    # Mount firmware
-    mkdir /firmware
-    mount vfat /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /firmware ro
-    # Load ADSP firmware for PMIC
-    wait /sys/kernel/boot_adsp/boot
-    write /sys/kernel/boot_adsp/boot 1
-    wait /sys/class/power_supply/battery
-    start health-hal-2-1
-    umount /firmware
 
 on property:twrp.all.users.decrypted=true
     umount /mnt/vendor/persist
