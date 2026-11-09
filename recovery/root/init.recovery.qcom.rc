@@ -66,6 +66,9 @@ on property:twrp.modules.loaded=true
     # Trigger a re-read and restore contexts so recovery can read the fuel gauge
     chmod 0664 /sys/class/power_supply/battery/uevent
     restorecon_recursive /sys/class/power_supply
+
+    # Start health HAL service required by fastbootd
+    start health-hal-2-1
     
     # Mount persist
     mkdir /mnt/vendor/persist
